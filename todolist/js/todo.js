@@ -7,7 +7,7 @@ Vue.component('todoitem',{
             danger:['fa-thermometer-quarter','fa-thermometer-half','fa-thermometer-three-quarters','fa-thermometer-full']
         }
     },
-    props:['todo'],
+    props:['todo','ID'],
     template:'<div class="section">\
                     <div>\
                         <i class="fa fa-3x" :class="ji" title="紧急程度"></i>\
@@ -20,7 +20,7 @@ Vue.component('todoitem',{
                     </div>\
                     <div>\
                         <i class="fa fa-check-square fa-2x" title="完成" @click="finished"></i>\
-                        <i class="fa fa-times-circle fa-2x" title="删除"></i>\
+                        <i class="fa fa-times-circle fa-2x" title="删除" @click="removeItem"></i>\
                     </div>\
                 </div>',
     computed:{
@@ -32,8 +32,13 @@ Vue.component('todoitem',{
     },
     methods:{
         finished:function(){//完成按钮处理函数，点击完成后改变状态
-            console.log(showItem.todos);
-            this.todo.isFinished=true;
+            this.todo.isFinished=!this.todo.isFinished;
+        },
+        removeItem:function(){
+            var todoList=showItem.todos;
+            todoList.splice(todoList.indexOf(this.todo),1);
+            console.log(todoList.indexOf(this.todo));
+            console.log(todoList);
         }
     }
 
