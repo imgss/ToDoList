@@ -4,20 +4,27 @@
 Vue.component('todoitem',{
     data:function(){
         return {
-            danger:['fa-thermometer-quarter','fa-thermometer-half','fa-thermometer-three-quarters','fa-thermometer-full']
+            danger:['fa-thermometer-quarter',
+                    'fa-thermometer-half',
+                    'fa-thermometer-three-quarters',
+                    'fa-thermometer-full']
+
         }
     },
-    props:['todo','ID'],
-    template:'<div class="section">\
+    props:['todo'],
+    template:'<div class="section" v-bind:class="{ finished: todo.isFinished }">\
                     <div>\
-                        <i class="fa fa-3x" :class="ji" title="紧急程度"></i>\
+                        <i class="fa fa-3x" :class="ji"  title="紧急程度"></i>\
                     </div>\
-                    <div>\
-                        <div>待完成：{{todo.value}}</div>\
-                        <div>完成状态：{{todo.isFinished?"已完成":"未完成"}}</div>\
-                        <div>截止时间：{{todo.deadline}}</div>\
-                        <div>备注：{{todo.tips}}</div>\
-                    </div>\
+                        <div class="item">\
+                            <div class="big" >{{todo.value.charAt(0)}}</div>\
+                            <div>\
+                                <div>待完成：{{todo.value}}</div>\
+                                <div>完成状态：{{todo.isFinished?"已完成":"未完成"}}</div>\
+                                <div>截止时间：{{todo.deadline}}</div>\
+                                <div>备注：{{todo.tips}}</div>\
+                            </div>\
+                        </div>\
                     <div>\
                         <i class="fa fa-check-square fa-2x" title="完成" @click="finished"></i>\
                         <i class="fa fa-times-circle fa-2x" title="删除" @click="removeItem"></i>\
@@ -35,10 +42,11 @@ Vue.component('todoitem',{
             this.todo.isFinished=!this.todo.isFinished;
         },
         removeItem:function(){
+            if(!this.todo.isFinished){
+                return false;
+            }
             var todoList=showItem.todos;
             todoList.splice(todoList.indexOf(this.todo),1);
-            console.log(todoList.indexOf(this.todo));
-            console.log(todoList);
         }
     }
 
@@ -69,6 +77,9 @@ var addItem=new Vue({//增加一条项目
             return nObj;
         },
         submit:function(){
+            if(!this.newToDo.value){
+                return false;
+            }
 
             this.newToDo.isImportant=parseInt(this.newToDo.isImportant);//接受到的isImportant是字符串，转换为数字
             var copy=this.copyObj(this.newToDo);

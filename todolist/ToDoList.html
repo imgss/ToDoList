@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/todo.css">
     <link rel="stylesheet" href="css/transition.css">
+    <link rel="stylesheet" href="css/addItemForm.css">
     <script src="js/vue.js"></script>
 </head>
 <body>
@@ -14,18 +15,26 @@
     <span>To Do List </span>   <i title='新增一个项目' class="fa fa-plus-square fa-1x" @click="show=!show"></i>
     <transition name="fade">
         <form id="addItem" v-if="show">
-            <label for="waitTo">待做事项：</label><input id="waitTo" type="text" v-model="newToDo.value"><br>
+            <div>
+            <label for="waitTo">待做事项：</label><input id="waitTo" type="text" v-model="newToDo.value">
+            </div>
+            <div>
             <label for="important">重要程度：</label>
             <select id="important" v-model.number="newToDo.isImportant">
                 <option value="0">不重要</option>
                 <option value="1">不太重要</option>
                 <option value="2">重要</option>
                 <option value="3">很重要</option>
-            </select><br>
+            </select>
+            </div>
+            <div>
             <label for="deadline">备注：</label>
-            <input type="text" id="tips" v-model="newToDo.tips"><br>
+            <input type="text" id="tips" v-model="newToDo.tips">
+            </div>
+            <div>
             <label for="deadline">截止时间：</label>
-            <input type="time" id="deadline" v-model="newToDo.deadline"><br>
+            <input type="time" id="deadline" v-model="newToDo.deadline">
+            </div>
             <button @click.prevent="show=!show ;submit()">确定</button>
         </form>
     </transition>
@@ -38,11 +47,13 @@
             <li>随机选择</li>
         </ul>
     </aside>
+    <transition name="fade">
     <article>
         <section v-for="todo in todos">
             <todoitem  :todo="todo"></todoitem>
         </section>
     </article>
+    </transition>
 </div>
 
 <script src="js/todo.js"></script>
