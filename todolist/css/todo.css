@@ -1,0 +1,98 @@
+body{
+    padding: 0 10%;
+    font-family: sans-serif;
+}
+ul{
+   list-style-type: none;
+}
+header{
+    display: flex;
+    justify-content:space-around;
+    align-items:flex-end;
+    width:100%;
+    padding: 20px 0;
+    font-size: 40px;
+    text-align: center;
+    color:#333;
+    border-bottom: solid 1px #42b983;
+
+}
+header i{
+    transform:translate(0 10px);
+}
+header span{
+    display: block;
+    padding: 3px;
+    background: #42b983;
+    box-shadow: 0 0 10px #222;
+    border-radius: 12px;
+}
+header i:hover{
+    color:#42b983;
+    cursor: pointer;
+}
+
+#todolist{
+    display: flex;
+}
+aside{
+    width:18%;
+}
+article{
+    float:right;
+    width:80%;
+    margin-left:5px;
+    padding:10px;
+    border-left:1px solid #42b983;
+    overflow: auto;
+}
+.section{
+    /*display:flex;*/
+    /*justify-content: flex-start;*/
+    /*align-items: flex-end;*/
+    border-left:#42b983 1px solid;
+    background-color: rgba(66, 185, 131, 0.6);
+    margin-bottom: 10px;
+    border-radius: 12px;
+    padding:3px;
+}
+.section{
+    display: flex;
+    padding: 5px 20px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+/*.section>div:first-child>i{*/
+    /*margin-left: 10px;*/
+/*}*/
+/*.section>div:nth-child(2){*/
+    /*margin-left:30px;*/
+/*}*/
+/*.section>div:last-child{*/
+    /*float:right;*/
+/*}*/
+.section i{
+    cursor: pointer;
+}
+#addItem{
+    position: absolute;
+    overflow: hidden;
+    text-align: left;
+    font-size: 16px;
+    line-height: 2em;
+    padding: 30px;
+    border-radius: 20px 0 0 0;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    width:400px;
+    height:300px;
+    transform: translate(-200px,-150px);
+    background-color: rgba(66, 185, 131,1);
+    box-shadow: #333333 3px 3px 20px;
+}
+#addItem button{
+    margin-bottom:5px ;
+    margin-right:5px ;
+}
+
