@@ -22,7 +22,7 @@ Vue.component('todoitem',{
                                 <div>待完成：{{todo.value}}</div>\
                                 <div>完成状态：{{todo.isFinished?"已完成":"未完成"}}</div>\
                                 <div>截止时间：{{todo.deadline}}</div>\
-                                <div>备注：{{todo.tips}}</div>\
+                                <div class="tips">备注：{{todo.tips}}</div>\
                             </div>\
                         </div>\
                     <div>\
@@ -93,28 +93,40 @@ var showItem=new Vue({
     el:'#todolist',
     data:{
         todos:[
-            {
-                isImportant:1,
-                isFinished:false,
-                value:'洗衣服',
-                tips:'不洗完不睡觉',
-                deadline:'14:00'
-            },
-            {
-                isImportant:2,
-                isFinished:false,
-                value:'做demo',
-                tips:'',
-                deadline:'16:00'
-            },
-            {
-                isImportant:3,
-                isFinished:false,
-                value:'去拍照',
-                tips:'',
-                deadline:'18:00'
+                {
+                    isImportant:1,
+                    isFinished:false,
+                    value:'洗衣服',
+                    tips:'不洗完不睡觉',
+                    deadline:'14:00'
+                },
+                {
+                    isImportant:2,
+                    isFinished:false,
+                    value:'做demo',
+                    tips:'',
+                    deadline:'16:00'
+                },
+                {
+                    isImportant:3,
+                    isFinished:false,
+                    value:'去拍照',
+                    tips:'',
+                    deadline:'18:00'
+                }
+            ],
+        todosCopy:null
+        },
+    methods:{
+        listByImportance:function(){
+            var todos=this.todos;
+            if (!this.todosCopy){
+                this.todosCopy=todos.slice();
             }
-            
-        ]
+            todos.sort(function(self,next){
+                return next.isImportant-self.isImportant;
+            });
+
+        }
     }
 });

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/todo.css">
     <link rel="stylesheet" href="css/transition.css">
     <link rel="stylesheet" href="css/addItemForm.css">
+    <link rel="stylesheet" href="css/options.css">
     <script src="js/vue.js"></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
     <transition name="fade">
         <form id="addItem" v-if="show">
             <div>
-            <label for="waitTo">待做事项：</label><input id="waitTo" type="text" v-model="newToDo.value">
+            <label for="waitTo">待做事项：</label><input id="waitTo" type="text" v-model.trim="newToDo.value">
             </div>
             <div>
             <label for="important">重要程度：</label>
@@ -41,10 +42,13 @@
 
 </header>
 <div id="todolist">
+    <!--侧边栏-->
     <aside id="options">
+        <p>排列方式：</p>
         <ul>
-            <li>随机排列</li>
-            <li>随机选择</li>
+            <li @click="listByImportance">重要程度</li>
+            <li>截止时间</li>
+            <li>仅显示未完成</li>
         </ul>
     </aside>
     <transition name="fade">
