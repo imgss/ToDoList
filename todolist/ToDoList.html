@@ -51,13 +51,11 @@
             <li>仅显示未完成</li>
         </ul>
     </aside>
-    <transition name="fade">
     <article>
-        <section v-for="todo in todos">
-            <todoitem  :todo="todo"></todoitem>
-        </section>
+        <transition-group name="list" tag="ul">
+            <todoitem v-for="(todo,index) in todos" :key="index" :todo="todo"></todoitem>
+        </transition-group>
     </article>
-    </transition>
 </div>
 
 <script src="js/todo.js"></script>

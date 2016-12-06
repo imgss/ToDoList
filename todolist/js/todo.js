@@ -12,7 +12,7 @@ Vue.component('todoitem',{
         }
     },
     props:['todo'],
-    template:'<div class="section" v-bind:class="{ finished: todo.isFinished }">\
+    template:'<li class="section" v-bind:class="{ finished: todo.isFinished }">\
                     <div>\
                         <i class="fa fa-3x" :class="ji"  title="紧急程度"></i>\
                     </div>\
@@ -29,7 +29,7 @@ Vue.component('todoitem',{
                         <i class="fa fa-check-square fa-2x" title="完成" @click="finished"></i>\
                         <i class="fa fa-times-circle fa-2x" title="删除" @click="removeItem"></i>\
                     </div>\
-                </div>',
+                </li>',
     computed:{
         ji:function(){
             var em=this.danger[this.todo.isImportant],obj={};
@@ -117,16 +117,16 @@ var showItem=new Vue({
             ],
         todosCopy:null
         },
-    methods:{
-        listByImportance:function(){
-            var todos=this.todos;
-            if (!this.todosCopy){
-                this.todosCopy=todos.slice();
+    methods: {
+        listByImportance: function () {
+            var todos = this.todos;
+            if (!this.todosCopy) {
+                this.todosCopy = todos.slice();
             }
-            todos.sort(function(self,next){
-                return next.isImportant-self.isImportant;
+            todos.sort(function (self, next) {
+                return next.isImportant - self.isImportant;
             });
 
-        }
+        },
     }
 });

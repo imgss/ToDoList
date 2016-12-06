@@ -34,3 +34,10 @@
         transform: scale(0);
     }
 }
+.list-enter-active, .list-leave-active {
+    transition: all 1s;
+}
+.list-enter, .list-leave-active {
+    opacity: 0;
+    transform: scale(0);
+}
