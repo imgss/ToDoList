@@ -7,7 +7,7 @@ Vue.component('todoitem',{
             danger:['fa-thermometer-quarter',
                     'fa-thermometer-half',
                     'fa-thermometer-three-quarters',
-                    'fa-thermometer-full']
+                    'fa-thermometer-full']//匹配重要程度icon 图标
 
         }
     },
@@ -60,7 +60,8 @@ var addItem=new Vue({//增加一条项目
             isFinished:false,
             value:'',
             tips:'',
-            deadline:''
+            deadline:'',
+            timeStamp:''
         }
     },
     methods:{
@@ -82,6 +83,7 @@ var addItem=new Vue({//增加一条项目
             }
 
             this.newToDo.isImportant=parseInt(this.newToDo.isImportant);//接受到的isImportant是字符串，转换为数字
+            this.newToDo.timeStamp=(new Date()).toTimeString();//增加时间戳
             var copy=this.copyObj(this.newToDo);
             //showItem.todos.push(this.newToDo);//这样只会传递引用
             showItem.todos.push(copy);//showItem.todos[length]=copy不会触发视图更新？？
@@ -117,6 +119,20 @@ var showItem=new Vue({
             ],
         todosCopy:null
         },
+    computed:{
+        countTodos:function(){
+            return this.todos.length;
+        },
+        countFinishedItems:function(){
+            var count=0;
+            this.todos.forEach(function(t,index){
+                if(t.isFinished){
+                    count++;
+                }
+            });
+            return count;
+        },
+    },
     methods: {
         listByImportance: function () {
             var todos = this.todos;

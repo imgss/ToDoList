@@ -11,7 +11,7 @@
     <script src="js/vue.js"></script>
 </head>
 <body>
-
+<!--弹出层-->
 <header id="add">
     <span>To Do List </span>   <i title='新增一个项目' class="fa fa-plus-square fa-1x" @click="show=!show"></i>
     <transition name="fade">
@@ -29,27 +29,40 @@
             </select>
             </div>
             <div>
-            <label for="deadline">备注：</label>
-            <input type="text" id="tips" v-model="newToDo.tips">
+                <label for="deadline">截止时间：</label>
+                <input type="time" id="deadline" v-model="newToDo.deadline" >
             </div>
             <div>
-            <label for="deadline">截止时间：</label>
-            <input type="time" id="deadline" v-model="newToDo.deadline">
+            <label for="tips">备注：</label>
+            <input type="text" id="tips" v-model="newToDo.tips" >
             </div>
+
             <button @click.prevent="show=!show ;submit()">确定</button>
         </form>
     </transition>
 
 </header>
+<!--展示-->
 <div id="todolist">
     <!--侧边栏-->
     <aside id="options">
-        <p>排列方式：</p>
-        <ul>
-            <li @click="listByImportance">重要程度</li>
-            <li>截止时间</li>
-            <li>仅显示未完成</li>
-        </ul>
+        <div>
+            <p>今日清单：</p>
+            <ul>
+                <li>总共:{{countTodos}}</li>
+                <li>已完成:{{countFinishedItems}}</li>
+                <li>未完成:{{countTodos-countFinishedItems}}</li>
+            </ul>
+        </div>
+        <div>
+            <p>排列方式：</p>
+            <ul>
+                <li @click="listByImportance">重要程度</li>
+                <li>截止时间</li>
+                <li>仅显示未完成</li>
+            </ul>
+        </div>
+
     </aside>
     <article>
         <transition-group name="list" tag="ul">
