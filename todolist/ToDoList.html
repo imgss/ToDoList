@@ -57,17 +57,22 @@
         <div>
             <p>排列方式：</p>
             <ul>
-                <li @click="listByImportance">重要程度</li>
-                <li>截止时间</li>
-                <li>仅显示未完成</li>
+                <li @click = "listByImportance">
+                    <i  class="fa fa-info fa-1x fa-fw"></i>
+                    重要程度</li>
+                <li @click = "listByDeadline">
+                    <i  class="fa fa-hourglass-end fa-1x fa-fw"></i>
+                    截止时间</li>
+                <li><i  class="fa fa-circle-o-notch  fa-1x fa-fw"></i>仅显示未完成</li>
             </ul>
         </div>
 
     </aside>
     <article>
-        <transition-group name="list" tag="ul">
+        <transition-group name="list" tag="ul" v-if='todos.length'>
             <todoitem v-for="(todo,index) in todos" :key="index" :todo="todo"></todoitem>
         </transition-group>
+        <p v-else>您还没有添加今天要做的事</p>
     </article>
 </div>
 

@@ -21,7 +21,6 @@ header{
     left:0;
     top:0;
     width:100%;
-    padding: 20px;
     font-size: 40px;
     text-align: center;
     color:#333;
@@ -117,6 +116,14 @@ i .finished{
 /*}*/
 .section i{
     cursor: pointer;
+}
+article>p{
+    font-size: 200%;
+    left:50%;
+    height:50%;
+    text-align: center;
+    vertical-align: middle;
+    color:#888;
 }
 
 

@@ -1,10 +1,14 @@
 #options{
     position: fixed;
-    left:6%;
-    top:100px;
+    left:20px;
+    top:65px;
+    padding-top: 35px;
+    padding-right: 20px;
     z-index: 1;
     overflow-x: hidden;
     overflow-y: auto;
+    bottom:0;
+    border-right: solid rgb(66, 185, 131) 1px;
 
 }
 #options div{

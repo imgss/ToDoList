@@ -17,7 +17,7 @@ Vue.component('todoitem',{
                         <i class="fa fa-3x" :class="ji"  title="紧急程度"></i>\
                     </div>\
                         <div class="item">\
-                            <div class="big" >{{todo.value.charAt(0)}}</div>\
+                            <div class="big" >{{todo.value.toUpperCase().charAt(0)}}</div>\
                             <div>\
                                 <div>待完成：{{todo.value}}</div>\
                                 <div>完成状态：{{todo.isFinished?"已完成":"未完成"}}</div>\
@@ -78,7 +78,7 @@ var addItem=new Vue({//增加一条项目
             return nObj;
         },
         submit:function(){
-            if(!this.newToDo.value){
+            if(!this.newToDo.value || !this.newToDo.deadline){
                 return false;
             }
 
@@ -87,6 +87,7 @@ var addItem=new Vue({//增加一条项目
             var copy=this.copyObj(this.newToDo);
             //showItem.todos.push(this.newToDo);//这样只会传递引用
             showItem.todos.push(copy);//showItem.todos[length]=copy不会触发视图更新？？
+            console.log(showItem.todos.length);
 
         }
     }
@@ -134,7 +135,7 @@ var showItem=new Vue({
         },
     },
     methods: {
-        listByImportance: function () {
+        listByImportance: function () {//按重要程度排序
             var todos = this.todos;
             if (!this.todosCopy) {
                 this.todosCopy = todos.slice();
@@ -144,5 +145,16 @@ var showItem=new Vue({
             });
 
         },
+        listByDeadline:function(){//按截止日期排序
+            var todos = this.todos;
+            if (!this.todosCopy) {
+                this.todosCopy = todos.slice();
+            }
+            todos.sort(function (self, next) {
+                var numSelf=parseFloat(self.deadline.replace(/:/,'.'));
+                var numNext=parseFloat(next.deadline.replace(/:/,'.'));
+                return numNext - numSelf;
+            });
+        }
     }
 });
