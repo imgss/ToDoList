@@ -5,7 +5,8 @@
     display:table-cell;
 }
 #addItem{
-    position: absolute;
+    position: fixed;
+    box-sizing: border-box;
     display: table;
     overflow: hidden;
     text-align: left;
@@ -25,4 +26,6 @@
 #addItem button{
     margin-bottom:5px ;
     margin-right:5px ;
+    padding:4px;
+    border-radius:4px;
 }

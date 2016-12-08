@@ -1,3 +1,25 @@
+#options{
+    position: fixed;
+    left:6%;
+    top:100px;
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+#options div{
+    margin:12px 0;
+    padding: 4px;
+    background-color:rgba(66, 185, 131,0.7);
+    border-radius: 5px;
+}
+#options div:first-child{
+    padding:3px 20%;
+}
+#options div:first-child p{
+    margin:5px 0;
+    overflow: hidden;
+}
 #options ul{
     padding-left: 0;
 }
@@ -11,9 +33,4 @@
 #options li:hover{
     border-left: solid 2px rgb(53,73,94);
 }
-#options div{
-    margin:12px 0;
-    padding: 4px;
-    background-color:rgba(66, 185, 131,0.7);
-    border-radius: 5px;
-}
+

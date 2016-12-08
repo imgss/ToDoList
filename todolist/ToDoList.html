@@ -13,34 +13,36 @@
 <body>
 <!--弹出层-->
 <header id="add">
-    <span>To Do List </span>   <i title='新增一个项目' class="fa fa-plus-square fa-1x" @click="show=!show"></i>
+    <div>
+    <span>To Do List </span>
+    <i title='新增一个项目' class="fa fa-plus-square fa-1x" @click="show=!show"></i>
+    </div>
     <transition name="fade">
         <form id="addItem" v-if="show">
             <div>
-            <label for="waitTo">待做事项：</label><input id="waitTo" type="text" v-model.trim="newToDo.value">
+                <label for="waitTo">待做事项：</label><input id="waitTo" type="text" v-model.trim="newToDo.value">
             </div>
             <div>
-            <label for="important">重要程度：</label>
-            <select id="important" v-model.number="newToDo.isImportant">
-                <option value="0">不重要</option>
-                <option value="1">不太重要</option>
-                <option value="2">重要</option>
-                <option value="3">很重要</option>
-            </select>
+                <label for="important">重要程度：</label>
+                <select id="important" v-model.number="newToDo.isImportant">
+                    <option value="0">不重要</option>
+                    <option value="1">不太重要</option>
+                    <option value="2">重要</option>
+                    <option value="3">很重要</option>
+                </select>
             </div>
             <div>
                 <label for="deadline">截止时间：</label>
                 <input type="time" id="deadline" v-model="newToDo.deadline" >
             </div>
             <div>
-            <label for="tips">备注：</label>
-            <input type="text" id="tips" v-model="newToDo.tips" >
+                <label for="tips">备注：</label>
+                <input type="text" id="tips" v-model="newToDo.tips" >
             </div>
 
             <button @click.prevent="show=!show ;submit()">确定</button>
         </form>
     </transition>
-
 </header>
 <!--展示-->
 <div id="todolist">
@@ -48,11 +50,9 @@
     <aside id="options">
         <div>
             <p>今日清单：</p>
-            <ul>
-                <li>总共:{{countTodos}}</li>
-                <li>已完成:{{countFinishedItems}}</li>
-                <li>未完成:{{countTodos-countFinishedItems}}</li>
-            </ul>
+            <p>总共:{{countTodos}}</p>
+            <p>已完成:{{countFinishedItems}}</p>
+            <p>未完成:{{countTodos-countFinishedItems}}</p>
         </div>
         <div>
             <p>排列方式：</p>

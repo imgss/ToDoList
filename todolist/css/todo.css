@@ -1,21 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
     padding: 0 10%;
     font-family: sans-serif;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    min-width: 500px;
 }
 ul{
    list-style-type: none;
 }
 header{
-    display: flex;
-    justify-content:space-around;
-    align-items:flex-end;
+    position: fixed;
+    z-index: 10;
+    left:0;
+    top:0;
     width:100%;
-    padding: 20px 0;
+    padding: 20px;
     font-size: 40px;
     text-align: center;
     color:#333;
     border-bottom: solid 1px #42b983;
+    background-color: rgba(255,255,255,0.4);
 
+}
+header div{
+    margin:5px 30px;
+    display: flex;
+    justify-content:space-between;
+    align-items:flex-end;
 }
 header i{
     transform:translate(0 10px);
@@ -33,7 +51,10 @@ header i:hover{
 }
 
 #todolist{
+    position: relative;
     display: flex;
+    top:100px;
+    left:18%;
 }
 aside{
     width:18%;
@@ -41,10 +62,9 @@ aside{
 article{
     float:right;
     width:80%;
+    height:100%;
     margin-left:5px;
     padding:10px;
-    border-left:1px solid #42b983;
-    overflow: auto;
 }
 .section{
     /*display:flex;*/
