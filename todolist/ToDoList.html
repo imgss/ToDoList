@@ -39,6 +39,8 @@
                 <label for="tips">备注：</label>
                 <input type="text" id="tips" v-model="newToDo.tips" >
             </div>
+            <div :value="alert">
+            </div>
 
             <button @click.prevent="show=!show ;submit()">确定</button>
         </form>
@@ -57,13 +59,26 @@
         <div>
             <p>排列方式：</p>
             <ul>
-                <li @click = "listByImportance">
+                <li @click = "listByProp('isImportant')">
                     <i  class="fa fa-info fa-1x fa-fw"></i>
                     重要程度</li>
                 <li @click = "listByDeadline">
                     <i  class="fa fa-hourglass-end fa-1x fa-fw"></i>
                     截止时间</li>
-                <li><i  class="fa fa-circle-o-notch  fa-1x fa-fw"></i>仅显示未完成</li>
+                <li @click = "listByProp('isFinished')">
+                    <i  class="fa fa-calendar-check-o fa-1x fa-fw"></i>
+                    完成情况</li>
+                <li @click = "onlyUnfinished">
+                    <span v-if="!onlyUnfinish">
+                        <i  class="fa fa-circle-o-notch  fa-1x fa-fw">
+                        </i>仅显示未完成
+                    </span>
+                     <span v-else>
+                        <i  class="fa fa-circle-o  fa-1x fa-fw">
+                        </i>显示全部
+                    </span>
+                </li>
+                </li>
             </ul>
         </div>
 

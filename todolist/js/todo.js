@@ -55,6 +55,7 @@ var addItem=new Vue({//增加一条项目
     el:'#add',
     data:{
         show:false,
+        alert:'',
         newToDo:{
             isImportant:0,
             isFinished:false,
@@ -78,10 +79,10 @@ var addItem=new Vue({//增加一条项目
             return nObj;
         },
         submit:function(){
-            if(!this.newToDo.value || !this.newToDo.deadline){
+            if(!this.newToDo.value || !this.newToDo.deadline){//必须填写截止时间
+                this.alert='请不要漏填事情或者截止时间';
                 return false;
             }
-
             this.newToDo.isImportant=parseInt(this.newToDo.isImportant);//接受到的isImportant是字符串，转换为数字
             this.newToDo.timeStamp=(new Date()).toTimeString();//增加时间戳
             var copy=this.copyObj(this.newToDo);
@@ -118,7 +119,8 @@ var showItem=new Vue({
                     deadline:'18:00'
                 }
             ],
-        todosCopy:null
+        todosCopy:null,
+        onlyUnfinish:false
         },
     computed:{
         countTodos:function(){
@@ -133,28 +135,38 @@ var showItem=new Vue({
             });
             return count;
         },
+        unFinished:function(){
+            return this.todos.filter(function(i){
+                return !i.isFinished;
+            })
+        }
     },
     methods: {
-        listByImportance: function () {//按重要程度排序
-            var todos = this.todos;
-            if (!this.todosCopy) {
-                this.todosCopy = todos.slice();
-            }
-            todos.sort(function (self, next) {
-                return next.isImportant - self.isImportant;
-            });
-
+        listByProp:function(prop){
+            console.log(prop);
+                if (this.todosCopy) {
+                    this.todos = this.todosCopy;
+                }
+                this.todos.sort(function (self, next) {
+                    return next[prop] - self[prop];
+                });
         },
         listByDeadline:function(){//按截止日期排序
             var todos = this.todos;
-            if (!this.todosCopy) {
-                this.todosCopy = todos.slice();
+            if (this.todosCopy) {
+                this.todos = this.todosCopy;
             }
-            todos.sort(function (self, next) {
+            this.todos.sort(function (self, next) {
                 var numSelf=parseFloat(self.deadline.replace(/:/,'.'));
                 var numNext=parseFloat(next.deadline.replace(/:/,'.'));
                 return numNext - numSelf;
             });
+
+        },
+        onlyUnfinished:function(){
+            this.todosCopy = this.todos.slice();
+            this.onlyUnfinish=!this.onlyUnfinish;
+            this.todos=this.unFinished;
         }
     }
 });
