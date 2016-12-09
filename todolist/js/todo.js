@@ -62,7 +62,8 @@ var addItem=new Vue({//增加一条项目
             value:'',
             tips:'',
             deadline:'',
-            timeStamp:''
+            timeStamp:'',
+            show:true
         }
     },
     methods:{
@@ -102,21 +103,24 @@ var showItem=new Vue({
                     isFinished:false,
                     value:'洗衣服',
                     tips:'不洗完不睡觉',
-                    deadline:'14:00'
+                    deadline:'14:00',
+                    show:true
                 },
                 {
                     isImportant:2,
                     isFinished:false,
                     value:'做demo',
                     tips:'',
-                    deadline:'16:00'
+                    deadline:'16:00',
+                    show:true
                 },
                 {
                     isImportant:3,
                     isFinished:false,
                     value:'去拍照',
                     tips:'',
-                    deadline:'18:00'
+                    deadline:'18:00',
+                    show:true
                 }
             ],
         todosCopy:null,
@@ -134,39 +138,44 @@ var showItem=new Vue({
                 }
             });
             return count;
-        },
-        unFinished:function(){
-            return this.todos.filter(function(i){
-                return !i.isFinished;
-            })
         }
     },
     methods: {
-        listByProp:function(prop){
+        listByProp: function (prop) {
             console.log(prop);
-                if (this.todosCopy) {
-                    this.todos = this.todosCopy;
-                }
-                this.todos.sort(function (self, next) {
-                    return next[prop] - self[prop];
-                });
+            if (this.todosCopy) {
+                this.todos = this.todosCopy;
+            }
+            this.todos.sort(function (self, next) {
+                return next[prop] - self[prop];
+            });
         },
-        listByDeadline:function(){//按截止日期排序
+        listByDeadline: function () {//按截止日期排序
             var todos = this.todos;
             if (this.todosCopy) {
                 this.todos = this.todosCopy;
             }
             this.todos.sort(function (self, next) {
-                var numSelf=parseFloat(self.deadline.replace(/:/,'.'));
-                var numNext=parseFloat(next.deadline.replace(/:/,'.'));
+                var numSelf = parseFloat(self.deadline.replace(/:/, '.'));
+                var numNext = parseFloat(next.deadline.replace(/:/, '.'));
                 return numNext - numSelf;
             });
 
         },
-        onlyUnfinished:function(){
-            this.todosCopy = this.todos.slice();
-            this.onlyUnfinish=!this.onlyUnfinish;
-            this.todos=this.unFinished;
+        onlyUnfinished: function () {
+            this.onlyUnfinish = !this.onlyUnfinish;//状态切换
+            if (this.onlyUnfinish) {
+                this.todos.forEach(function (item) {
+                    if (item.isFinished) {
+                        item.show = false;
+                    }
+                });
+            }
+            else {
+                this.todos.forEach(function (item) {
+                    item.show = true;
+                });
+            }
         }
     }
 });

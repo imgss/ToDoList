@@ -85,7 +85,7 @@
     </aside>
     <article>
         <transition-group name="list" tag="ul" v-if='todos.length'>
-            <todoitem v-for="(todo,index) in todos" :key="index" :todo="todo"></todoitem>
+            <todoitem v-for="(todo,index) in todos" :key="index" :todo="todo" v-if="todo.show"></todoitem>
         </transition-group>
         <p v-else>您还没有添加今天要做的事</p>
     </article>
