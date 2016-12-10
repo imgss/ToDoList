@@ -69,6 +69,7 @@ article{
     /*display:flex;*/
     /*justify-content: flex-start;*/
     /*align-items: flex-end;*/
+    transition: all 0.3s;
     border-left:#f66 8px solid;
     background-color: rgba(66, 185, 131, 0.6);
     margin-bottom: 10px;

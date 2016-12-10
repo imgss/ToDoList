@@ -18,32 +18,7 @@
     <i title='新增一个项目' class="fa fa-plus-square fa-1x" @click="show=!show"></i>
     </div>
     <transition name="fade">
-        <form id="addItem" v-if="show">
-            <div>
-                <label for="waitTo">待做事项：</label><input id="waitTo" type="text" v-model.trim="newToDo.value">
-            </div>
-            <div>
-                <label for="important">重要程度：</label>
-                <select id="important" v-model.number="newToDo.isImportant">
-                    <option value="0">不重要</option>
-                    <option value="1">不太重要</option>
-                    <option value="2">重要</option>
-                    <option value="3">很重要</option>
-                </select>
-            </div>
-            <div>
-                <label for="deadline">截止时间：</label>
-                <input type="time" id="deadline" v-model="newToDo.deadline" >
-            </div>
-            <div>
-                <label for="tips">备注：</label>
-                <input type="text" id="tips" v-model="newToDo.tips" >
-            </div>
-            <div :value="alert">
-            </div>
-
-            <button @click.prevent="show=!show ;submit()">确定</button>
-        </form>
+        <additem v-if="show"></additem>
     </transition>
 </header>
 <!--展示-->
@@ -85,7 +60,7 @@
     </aside>
     <article>
         <transition-group name="list" tag="ul" v-if='todos.length'>
-            <todoitem v-for="(todo,index) in todos" :key="index" :todo="todo" v-if="todo.show"></todoitem>
+            <todoitem v-for="(todo,index) in todos" :key="index" :todo="todo" :index="index" @remove="removeItem" v-if="todo.show"></todoitem>
         </transition-group>
         <p v-else>您还没有添加今天要做的事</p>
     </article>

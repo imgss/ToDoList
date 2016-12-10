@@ -11,7 +11,7 @@ Vue.component('todoitem',{
 
         }
     },
-    props:['todo'],
+    props:['todo','index'],
     template:'<li class="section" v-bind:class="{ finished: todo.isFinished }">\
                     <div>\
                         <i class="fa fa-3x" :class="ji"  title="紧急程度"></i>\
@@ -27,7 +27,7 @@ Vue.component('todoitem',{
                         </div>\
                     <div>\
                         <i class="fa fa-check-square fa-2x" title="完成" @click="finished"></i>\
-                        <i class="fa fa-times-circle fa-2x" title="删除" @click="removeItem"></i>\
+                        <i class="fa fa-times-circle fa-2x" title="删除" @click="remove"></i>\
                     </div>\
                 </li>',
     computed:{
@@ -41,29 +41,53 @@ Vue.component('todoitem',{
         finished:function(){//完成按钮处理函数，点击完成后改变状态
             this.todo.isFinished=!this.todo.isFinished;
         },
-        removeItem:function(){
+        remove:function(){
             if(!this.todo.isFinished){
                 return false;
             }
-            var todoList=showItem.todos;
-            todoList.splice(todoList.indexOf(this.todo),1);
+            this.$emit('remove',this.index);//发出remove事件
+            //todoList.splice(todoList.indexOf(this.todo),1);
         }
     }
 
 });
-var addItem=new Vue({//增加一条项目
-    el:'#add',
-    data:{
-        show:false,
-        alert:'',
-        newToDo:{
-            isImportant:0,
-            isFinished:false,
-            value:'',
-            tips:'',
-            deadline:'',
-            timeStamp:'',
-            show:true
+Vue.component('additem',{
+    template:'<form id="addItem">\
+                    <div>\
+                        <label for="waitTo">待做事项：</label>\
+                        <input id="waitTo" type="text" v-model.trim="newToDo.value" :class="{ alert: alert }">\
+                    </div>\
+                    <div>\
+                        <label for="important">重要程度：</label>\
+                        <select id="important" v-model.number="newToDo.isImportant">\
+                            <option value="0">不重要</option>\
+                            <option value="1">不太重要</option>\
+                            <option value="2">重要</option>\
+                            <option value="3">很重要</option>\
+                        </select>\
+                    </div>\
+                    <div>\
+                        <label for="deadline">截止时间：</label>\
+                        <input type="time" id="deadline" v-model="newToDo.deadline" :class="{ alert: alert }">\
+                    </div>\
+                    <div>\
+                        <label for="tips">备注：</label>\
+                        <input type="text" id="tips" v-model="newToDo.tips" >\
+                    </div>\
+                        <button @click.prevent="submit()">确定</button>\
+                </form>',
+    data:function(){
+        return{
+            alert:false,
+            newToDo:{
+                isImportant:0,
+                isFinished:false,
+                value:'',
+                tips:'',
+                deadline:'',
+                timeStamp:'',
+                show:true
+            }
         }
     },
     methods:{
@@ -81,17 +105,25 @@ var addItem=new Vue({//增加一条项目
         },
         submit:function(){
             if(!this.newToDo.value || !this.newToDo.deadline){//必须填写截止时间
-                this.alert='请不要漏填事情或者截止时间';
+                this.alert=true;
                 return false;
             }
+            this.alert=false;
             this.newToDo.isImportant=parseInt(this.newToDo.isImportant);//接受到的isImportant是字符串，转换为数字
             this.newToDo.timeStamp=(new Date()).toTimeString();//增加时间戳
             var copy=this.copyObj(this.newToDo);
             //showItem.todos.push(this.newToDo);//这样只会传递引用
             showItem.todos.push(copy);//showItem.todos[length]=copy不会触发视图更新？？
-            console.log(showItem.todos.length);
+            this.show=!this.show ;
 
         }
+    }
+});
+
+var addItem=new Vue({//增加一条项目
+    el:'#add',
+    data:{
+        show:false,
     }
 });
 var showItem=new Vue({
@@ -141,8 +173,10 @@ var showItem=new Vue({
         }
     },
     methods: {
+        removeItem:function(i){
+            this.todos.splice(i,1);
+        },
         listByProp: function (prop) {
-            console.log(prop);
             if (this.todosCopy) {
                 this.todos = this.todosCopy;
             }

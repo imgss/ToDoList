@@ -1,43 +1,36 @@
-.fade-enter-active, .fade-leave-active {
-    transition: all 0.5s
-}
-.fade-enter,.fade-leave-active {
-    /*设置.fade-enter的opacity有必要，不然在进入的时候没有过渡效果。*/
-    opacity: 0;
-    transform: scale(0.7);
-}
-.bounce-enter-active {
-    animation: bounce-in .5s;
-}
-.bounce-leave-active {
-    animation: bounce-out .5s;
-}
-@keyframes bounce-in {
+@keyframes list-in {
     0% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(2);
+        transform: translate(100px);
     }
     100% {
-        transform: scale(1);
+        transform: translate(0px);
     }
 }
-@keyframes bounce-out {
+@keyframes list-out {
     0% {
         transform: scale(1);
     }
-    50% {
-        transform: scale(2);
-    }
     100% {
-        transform: scale(0);
+        transform: translate(100px);
+        opacity: 0;
     }
 }
-.list-enter-active, .list-leave-active {
-    transition: all 1s;
+/*.list-enter-active,  {*/
+    /*transition: all 1s;*/
+/*}*/
+/*.list-leave-active{*/
+    /*transition: all 0.3s;*/
+/*}*/
+/*.list-enter, .list-leave-active{*/
+    /*opacity: 0;*/
+    /*transform: scale(0);*/
+/*}*/
+.list-enter-active {
+    animation: list-in 0.8s;
 }
-.list-enter, .list-leave-active {
-    opacity: 0;
-    transform: scale(0);
+.list-leave-active {
+    animation: list-out 0.8s;
+}
+.list-move {
+    transition:transform 0.8s ;
 }
