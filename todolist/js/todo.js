@@ -1,7 +1,7 @@
 /**
  * Created by gg on 2016/12/4.
  */
-Vue.component('todoitem',{
+var todoitem={
     data:function(){
         return {
             danger:['fa-thermometer-quarter',
@@ -26,8 +26,9 @@ Vue.component('todoitem',{
                             </div>\
                         </div>\
                     <div>\
-                        <i class="fa fa-check-square fa-2x" title="完成" @click="finished"></i>\
-                        <i class="fa fa-times-circle fa-2x" title="删除" @click="remove"></i>\
+                        <i class="fa fa-check-square fa-2x fa-fw" title="完成" v-if="!this.todo.isFinished" @click="finished"></i>\
+                        <i class="fa fa-check-square-o fa-2x fa-fw" title="完成" v-else @click="finished"></i>\
+                        <i class="fa fa-times-circle fa-2x fa-fw" title="删除" @click="remove"></i>\
                     </div>\
                 </li>',
     computed:{
@@ -50,7 +51,7 @@ Vue.component('todoitem',{
         }
     }
 
-});
+};
 Vue.component('additem',{
     template:'<form id="addItem">\
                     <div>\
@@ -75,6 +76,7 @@ Vue.component('additem',{
                         <input type="text" id="tips" v-model="newToDo.tips" >\
                     </div>\
                         <button @click.prevent="submit()">确定</button>\
+                        <button @click.prevent="hide">关闭</button>\
                 </form>',
     data:function(){
         return{
@@ -86,7 +88,7 @@ Vue.component('additem',{
                 tips:'',
                 deadline:'',
                 timeStamp:'',
-                show:true
+                show:true//新增项目默认显示
             }
         }
     },
@@ -113,12 +115,20 @@ Vue.component('additem',{
             this.newToDo.timeStamp=(new Date()).toTimeString();//增加时间戳
             var copy=this.copyObj(this.newToDo);
             //showItem.todos.push(this.newToDo);//这样只会传递引用
-            showItem.todos.push(copy);//showItem.todos[length]=copy不会触发视图更新？？
-            this.show=!this.show ;
-
+            showItem.todos.push(copy);
+        },
+        hide:function(){
+            this.$emit('hide');
         }
     }
 });
+var timeline = {
+    template: '<div class="timeline">' +
+                '<span class="passed"></span>' +
+                '<span></span>' +
+                '<i v-for=""></i>' +
+              '</div>'
+}
 
 var addItem=new Vue({//增加一条项目
     el:'#add',
@@ -155,9 +165,16 @@ var showItem=new Vue({
                     show:true
                 }
             ],
-        todosCopy:null,
         onlyUnfinish:false
         },
+    created:function(){
+        if(!localStorage.todos){
+            return false;
+        }
+        else{
+            this.todos=JSON.parse(localStorage.todos);
+        }
+    },
     computed:{
         countTodos:function(){
             return this.todos.length;
@@ -211,5 +228,12 @@ var showItem=new Vue({
                 });
             }
         }
+    },
+    components:{
+        'timeline':timeline,
+        'todoitem':todoitem
     }
+});
+window.addEventListener('unload',function(){
+        localStorage.setItem('todos',JSON.stringify(showItem.todos));
 });

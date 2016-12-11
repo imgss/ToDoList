@@ -1,0 +1,7 @@
+.timeline{
+    width:100%;
+    height:1px;
+    background-color:rgb(252,183,56) ;
+    position:fixed;
+    top:62px;
+}

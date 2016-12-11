@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/transition.css">
     <link rel="stylesheet" href="css/addItemForm.css">
     <link rel="stylesheet" href="css/options.css">
+    <link rel="stylesheet" href="css/timeline.css">
     <script src="js/vue.js"></script>
 </head>
 <body>
@@ -18,11 +19,12 @@
     <i title='新增一个项目' class="fa fa-plus-square fa-1x" @click="show=!show"></i>
     </div>
     <transition name="fade">
-        <additem v-if="show"></additem>
+        <additem v-if="show" @hide="show=!show"></additem>
     </transition>
 </header>
 <!--展示-->
 <div id="todolist">
+    <timeline></timeline>
     <!--侧边栏-->
     <aside id="options">
         <div>

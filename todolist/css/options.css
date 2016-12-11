@@ -1,7 +1,7 @@
 #options{
     position: fixed;
     left:20px;
-    top:65px;
+    top:62px;
     padding-top: 35px;
     padding-right: 20px;
     z-index: 1;
@@ -18,7 +18,8 @@
     border-radius: 5px;
 }
 #options div:first-child{
-    padding:3px 20%;
+    padding:3px 30%;
+    border: white dotted 3px;
 }
 #options div:first-child p{
     margin:5px 0;
