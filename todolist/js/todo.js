@@ -32,7 +32,7 @@ var todoitem={
                     </div>\
                 </li>',
     computed:{
-        ji:function(){
+        ji:function(){//重要程度的动态class
             var em=this.danger[this.todo.isImportant],obj={};
             obj[em]=true;
             return obj;
@@ -124,16 +124,34 @@ Vue.component('additem',{
 });
 var timeline = {
     template: '<div class="timeline">' +
-                '<span class="passed"></span>' +
-                '<span></span>' +
-                '<i v-for=""></i>' +
-              '</div>'
+                '<div class="passed" :style="{width:timelen}"><div class="point" title="你会发现一小时其实很快"></div></div>' +
+              '</div>',
+    props:['timelen']//传递的属性名不分大小写，导致使用:timeLen传递属性时失败，没有传递进timeLen的值
 }
 
-var addItem=new Vue({//增加一条项目
+new Vue({//增加一条项目
     el:'#add',
+    created:function(){
+        var self=this;
+       setInterval(self.time2width,1000);
+
+    },
     data:{
         show:false,
+        timeLen:''
+    },
+    methods:{
+        time2width:function(){
+            var now,totalSec;
+            now=new Date();
+/*            totalSec=(now.getHours()*60+now.getMinutes())*60+now.getSeconds();
+            this.timeLen=(totalSec/(24*60*60)*100)+'%';//计算出当前时间占一天中的百分比*/
+            totalSec=now.getMinutes()*60+now.getSeconds();
+            this.timeLen=(totalSec/(60*60)*100)+'%';//计算出当前秒占一小时中的百分比
+        }
+    },
+    components:{
+        'timeline':timeline,
     }
 });
 var showItem=new Vue({
@@ -230,7 +248,6 @@ var showItem=new Vue({
         }
     },
     components:{
-        'timeline':timeline,
         'todoitem':todoitem
     }
 });

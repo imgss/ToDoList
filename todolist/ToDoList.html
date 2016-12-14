@@ -19,22 +19,24 @@
     <i title='新增一个项目' class="fa fa-plus-square fa-1x" @click="show=!show"></i>
     </div>
     <transition name="fade">
-        <additem v-if="show" @hide="show=!show"></additem>
+        <additem v-show="show" @hide="show=!show"></additem>
     </transition>
+    <timeline :timelen="timeLen"></timeline>
 </header>
 <!--展示-->
+
 <div id="todolist">
-    <timeline></timeline>
     <!--侧边栏-->
     <aside id="options">
         <div>
-            <p>今日清单：</p>
-            <p>总共:{{countTodos}}</p>
-            <p>已完成:{{countFinishedItems}}</p>
-            <p>未完成:{{countTodos-countFinishedItems}}</p>
+            <h3>今日需完成：{{countTodos}}项</h3>
+            <ul>
+            <li>已完成:{{countFinishedItems}}</li>
+            <li>待完成:{{countTodos-countFinishedItems}}</li>
+            </ul>
         </div>
-        <div>
-            <p>排列方式：</p>
+        <div >
+            <h3>排列方式：</h3>
             <ul>
                 <li @click = "listByProp('isImportant')">
                     <i  class="fa fa-info fa-1x fa-fw"></i>

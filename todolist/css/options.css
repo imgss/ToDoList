@@ -17,8 +17,11 @@
     background-color:rgba(66, 185, 131,0.7);
     border-radius: 5px;
 }
+#options h3{
+    padding:6px 0px;
+}
 #options div:first-child{
-    padding:3px 30%;
+    padding:3px auto 3px auto;
     border: white dotted 3px;
 }
 #options div:first-child p{
@@ -29,13 +32,12 @@
     padding-left: 0;
 }
 #options li{
-    background-color:#f1f1f1;
     margin:5px 0;
     padding: 4px 8px;
-    border-left: solid 2px #f1f1f1;
+    border-bottom: solid 1px #f1f1f1;
     cursor: pointer;
 }
 #options li:hover{
-    border-left: solid 2px rgb(53,73,94);
+    border-bottom: solid 1px #f66;
 }
 
