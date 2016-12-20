@@ -1,0 +1,90 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const state = {
+    onlyUnfinish: false,
+    todos: [{
+            isImportant: 1,
+            isFinished: false,
+            value: '洗衣服',
+            tips: '不洗完不睡觉',
+            deadline: '14:00',
+            show: true
+        },
+        {
+            isImportant: 2,
+            isFinished: false,
+            value: '做demo',
+            tips: '',
+            deadline: '16:00',
+            show: true
+        },
+        {
+            isImportant: 3,
+            isFinished: false,
+            value: '去拍照',
+            tips: '',
+            deadline: '18:00',
+            show: true
+        }
+    ]
+}
+let getters = {
+    todos: state => state.todos,
+    countTodos: state => state.todos.length,
+    countFinishedItems: state => {
+        let countFinished = 0;
+        state.todos.forEach(function(item) { if (item.isFinished) countFinished++; })
+        return countFinished;
+    }
+}
+let mutations = {
+    additem(st, newit) {
+        st.todos.push(newit);
+    },
+    removeItem(st, i) {
+        st.todos.splice(i, 1);
+    },
+    listByProp(st, prop) {
+        if (st.todosCopy) {
+            st.todos = st.todosCopy;
+        }
+        st.todos.sort(function(self, next) {
+            return next[prop] - self[prop];
+        });
+    },
+    listByDeadline(st) { //按截止日期排序
+        var todos = st.todos;
+        if (st.todosCopy) {
+            st.todos = st.todosCopy;
+        }
+        st.todos.sort(function(self, next) {
+            var numSelf = parseFloat(self.deadline.replace(/:/, '.'));
+            var numNext = parseFloat(next.deadline.replace(/:/, '.'));
+            return numNext - numSelf;
+        });
+    },
+    onlyUnfinished(st) {
+        st.onlyUnfinish = !st.onlyUnfinish; //状态切换
+        if (st.onlyUnfinish) {
+            st.todos.forEach(function(item) {
+                if (item.isFinished) {
+                    item.show = false;
+                }
+            });
+        } else {
+            st.todos.forEach(function(item) {
+                item.show = true;
+            });
+        }
+    }
+
+}
+
+export default new Vuex.Store({
+    state,
+    getters,
+    mutations
+})
