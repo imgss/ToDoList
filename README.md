@@ -25,7 +25,7 @@
 
 ##模块化
 
-这个仓库的todolist-vuex下有这个应用的进阶版，通过vue-cli提供的模板，使用单文件组件，将应用分成几个组件，使用vuex共享状态，使整个应用的结构更明白
+这个仓库的[todolist-vuex](https://github.com/imgss/ToDoList/tree/todolist-vuex)分支下有这个应用的进阶版，通过vue-cli提供的模板，使用单文件组件，将应用分成几个组件，使用vuex共享状态，使整个应用的结构更明白
 ## 应用截图
 下面是应用的截图
 
