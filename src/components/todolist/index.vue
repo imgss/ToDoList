@@ -3,7 +3,7 @@
         <!--侧边栏-->
         <article>
             <transition-group name="list" tag="ul" v-if='todos.length'>
-                <todoitem v-for="(todo,index) in todos" :key="index" :todo="todo" :index="index" @remove="removeItem" v-if="todo.show"></todoitem>
+                <li is='todoitem' v-for="(todo,index) in todos" :key="todo.timeStamp" :todo="todo" :index="index" @remove="removeItem" v-if="todo.show"></todoitem>
             </transition-group>
             <p v-else>您还没有添加今天要做的事</p>
         </article>
@@ -177,6 +177,10 @@
     }
     
     .list-move {
-        transition: transform 0.8s;
+        transition: translate 0.8s;
+    }
+    
+    .list-item {
+        transition: all 0.8s;
     }
 </style>

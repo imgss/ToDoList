@@ -8,6 +8,7 @@ const state = {
     todos: [{
             isImportant: 1,
             isFinished: false,
+            timeStamp: 'a',
             value: '洗衣服',
             tips: '不洗完不睡觉',
             deadline: '14:00',
@@ -16,6 +17,7 @@ const state = {
         {
             isImportant: 2,
             isFinished: false,
+            timeStamp: '12:00',
             value: '做demo',
             tips: '',
             deadline: '16:00',
@@ -23,6 +25,7 @@ const state = {
         },
         {
             isImportant: 3,
+            timeStamp: 'c',
             isFinished: false,
             value: '去拍照',
             tips: '',

@@ -1,5 +1,5 @@
 <template>
-<li class="section" v-bind:class="{ finished: todo.isFinished }">
+<li class="section list-item" v-bind:class="{ finished: todo.isFinished }">
                   <div>
                       <i class="fa fa-3x" :class="ji"  title="紧急程度"></i>
                   </div>
