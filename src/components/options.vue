@@ -99,7 +99,7 @@
     }
     
     #options {
-        position: absolute;
+        position: fixed;
         width: 180px;
         top: 62px;
         padding-top: 35px;

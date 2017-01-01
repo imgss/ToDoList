@@ -58,6 +58,13 @@
             top: 100px;
             left: 18%;
         }
+        article {
+            float: right;
+            width: 80%;
+            height: 100%;
+            margin-left: 5px;
+            padding: 10px;
+        }
     }
     
     @media screen and (max-width: 950px) {
@@ -67,31 +74,34 @@
             top: 100px;
             left: 5%;
         }
+        article {
+            float: right;
+            width: 100%;
+            height: 100%;
+            margin-left: 3px;
+            padding: 10px;
+        }
+        div.item {
+            flex-shrink: 1;
+        }
     }
     
-    article {
-        float: right;
-        width: 80%;
-        height: 100%;
-        margin-left: 5px;
-        padding: 10px;
+    ul {
+        margin: 0;
+        padding: 0;
     }
     
     .section {
-        /*display:flex;*/
-        /*justify-content: flex-start;*/
-        /*align-items: flex-end;*/
+        display: flex;
+        padding: 5px 0px;
+        justify-content: space-around;
+        align-items: flex-end;
         transition: all 0.3s;
         border-left: #f66 8px solid;
         background-color: rgba(66, 185, 131, 0.6);
         margin-bottom: 10px;
         border-radius: 0 18px 18px 0;
         padding: 3px;
-    }
-    
-    .big+div div {
-        width: 200px;
-        overflow: auto;
     }
     
     .tips {
@@ -107,13 +117,6 @@
         color: #42b983;
     }
     
-    .section {
-        display: flex;
-        padding: 5px 20px;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
-    
     .section>div:first-child {
         align-self: center;
     }
@@ -121,12 +124,12 @@
     .section .item {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
     }
     
     .section .big {
         font-size: 3em;
-        margin-right: 10px;
+        margin: 10px 0;
         line-height: 100%;
     }
     /*.section>div:last-child{*/
