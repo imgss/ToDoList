@@ -51,15 +51,22 @@
 </script>
 
 <style>
-    #todolist {
-        position: relative;
-        display: flex;
-        top: 100px;
-        left: 18%;
+    @media screen and (min-width:950px) {
+        #todolist {
+            position: relative;
+            display: flex;
+            top: 100px;
+            left: 18%;
+        }
     }
     
-    aside {
-        width: 18%;
+    @media screen and (max-width: 950px) {
+        #todolist {
+            position: relative;
+            display: flex;
+            top: 100px;
+            left: 5%;
+        }
     }
     
     article {
