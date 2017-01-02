@@ -60,9 +60,9 @@
         }
         article {
             float: right;
-            width: 80%;
+            width: 70%;
             height: 100%;
-            margin-left: 5px;
+            margin-left: 5%;
             padding: 10px;
         }
     }
@@ -76,9 +76,9 @@
         }
         article {
             float: right;
-            width: 100%;
+            width: 90%;
             height: 100%;
-            margin-left: 3px;
+            margin: 0 3px;
             padding: 10px;
         }
         div.item {
@@ -94,7 +94,7 @@
     .section {
         display: flex;
         padding: 5px 0px;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: flex-end;
         transition: all 0.3s;
         border-left: #f66 8px solid;
@@ -119,12 +119,6 @@
     
     .section>div:first-child {
         align-self: center;
-    }
-    
-    .section .item {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
     }
     
     .section .big {

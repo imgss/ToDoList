@@ -1,29 +1,26 @@
 <template>
-  <form id="addItem">
-      <div>
-          <label for="waitTo">待做事项：</label>
-          <input id="waitTo" type="text" v-model.trim="newToDo.value" :class="{ alert: alert }" required>
-      </div>
-      <div>
-          <label for="important">重要程度：</label>
-          <select id="important" v-model.number="newToDo.isImportant">
-              <option value="0">不重要</option>
-              <option value="1">不太重要</option>
-              <option value="2">重要</option>
-              <option value="3">很重要</option>
-          </select>
-      </div>
-      <div>
-          <label for="deadline">截止时间：</label>
-          <input type="time" id="deadline" v-model="newToDo.deadline" :class="{ alert: alert }" required>
-      </div>
-      <div>
-          <label for="tips">备注：</label>
-          <input type="text" id="tips" v-model="newToDo.tips" >
-      </div>
-          <button @click.prevent="submit()">确定</button>
-          <button @click.prevent="hide">关闭</button>
-  </form>
+    <div id='wrap'>
+        <form id="addItem">
+            <div>
+                <label for="waitTo">待做事项：</label>
+                <input id="waitTo" type="text" v-model.trim="newToDo.value" :class="{ alert: alert }" required>
+            </div>
+            <div>
+                <label for="important">重要程度：</label>
+                <input type="range" id="important" v-model.number="newToDo.isImportant" min='0' max='3'>{{importantStr}}
+            </div>
+            <div>
+                <label for="deadline">截止时间：</label>
+                <input type="time" id="deadline" v-model="newToDo.deadline" :class="{ alert: alert }" required>
+            </div>
+            <div>
+                <label for="tips">备注：</label>
+                <input type="text" id="tips" v-model="newToDo.tips" >
+            </div>
+                <button @click.prevent="submit()">确定</button>
+                <button @click.prevent="hide">关闭</button>
+        </form>
+  </div>
 </template>
 
 <script>
@@ -45,6 +42,13 @@
                     show: true //新增项目默认显示
                 }
             }
+        },
+        computed: {
+            importantStr: function() {
+                var imArr = ['不重要', '较重要', '重要', '很重要'];
+                return imArr[this.newToDo.isImportant];
+            }
+
         },
         methods: {
             copyObj: function(old) { //向组件传递数据时，复制对象
@@ -80,6 +84,22 @@
 </script>
 
 <style scoped>
+    #wrap {
+        position: fixed;
+        transition: all 0.3s;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(20, 20, 20, 0.6);
+        text-align: center;
+    }
+    
     #addItem div {
         display: table-row;
     }
@@ -89,7 +109,9 @@
     }
     
     #addItem {
-        position: fixed;
+        position: absolute;
+        left: 50%;
+        top: 50%;
         box-sizing: border-box;
         display: table;
         overflow: hidden;
@@ -98,9 +120,6 @@
         line-height: 2em;
         padding: 30px;
         border-radius: 20px 0 0 0;
-        z-index: 999;
-        top: 50%;
-        left: 50%;
         width: 400px;
         height: 300px;
         transform: translate(-200px, -150px);

@@ -6,10 +6,10 @@
                       <div class="item">
                           <div class="big" >{{todo.value.toUpperCase().charAt(0)}}</div>
                           <div>
-                              <div>待完成：{{todo.value}}</div>
-                              <div>完成状态：{{todo.isFinished?"已完成":"未完成"}}</div>
-                              <div>截止时间：{{todo.deadline}}</div>
-                              <div class="tips">备注：{{todo.tips}}</div>
+                              <div><span>待完成：</span><span>{{todo.value}}</span></div>
+                              <div><span>完成状态：</span><span>{{todo.isFinished?"已完成":"未完成"}}</span></div>
+                              <div><span>截止时间：</span><span>{{todo.deadline}}</span></div>
+                              <div class="tips"><span>备注：</span><span>{{todo.tips}}</span></div>
                           </div>
                       </div>
                   <div>
@@ -55,3 +55,25 @@
         }
     };
 </script>
+
+<style scoped>
+    .item {
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
+    .item>div:last-child {
+        display: table;
+    }
+    
+    span:first-child {
+        width: 82px;
+        vertical-align: middle;
+    }
+    
+    span {
+        display: table-cell;
+    }
+</style>
