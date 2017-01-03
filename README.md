@@ -8,8 +8,8 @@
 
 ##截图
 
-![](https://github.com/imgss/ToDoList/tree/todolist-vuex/snip/pc.PNG "pc截图")  
-![](https://github.com/imgss/ToDoList/tree/todolist-vuex/snip/phone.png "手机截图")    
+![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/pc.PNG "pc截图")  
+![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/phone.png "手机截图")    
 
 
 ## 运行这个应用
