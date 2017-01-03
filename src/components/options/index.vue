@@ -1,6 +1,7 @@
 <template>
     <aside id="options" :class="{open:isOpen}">
         <i class="fa fa-bars fa-2x" aria-hidden="true" @click='isOpen=!isOpen' @touchend='isOpen=!isOpen'></i>
+        <!--待完成事项-->
         <div>
             <h3>今日需完成：<big>{{countTodos}}</big>项</h3>
             <ul>
@@ -8,6 +9,7 @@
                 <li>待完成:{{countTodos-countFinishedItems}}</li>
             </ul>
         </div>
+       <!--排序方式-->
         <div >
             <h3>排列方式：</h3>
             <ul>
@@ -33,6 +35,7 @@
                 </li>
             </ul>
         </div>
+        <weather></weather>
     </aside>
 </template>
 
@@ -43,6 +46,7 @@
         mapActions,
         mapMutations
     } from 'vuex';
+    import weather from './weather';
     export default {
         data: function() {
             return {
@@ -66,6 +70,9 @@
                 'onlyUnfinished'
 
             ])
+        },
+        components: {
+            weather
         }
     }
 </script>

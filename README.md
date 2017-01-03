@@ -1,7 +1,16 @@
 # todolist
 
 > 一个简单的Vue.js应用，这个分支是master的vue单文件版本，实现排序,删除,添加item的功能及其过渡效果
+
 >简单适配移动端。
+
+>2017.1.3 应用vue-resoure的jsonp请求天气，实现可折叠天气组件。:blush:
+
+##截图
+
+![](https://github.com/imgss/ToDoList/tree/todolist-vuex/snip/pc.PNG "pc截图")  
+![](https://github.com/imgss/ToDoList/tree/todolist-vuex/snip/phone.png "手机截图")    
+
 
 ## 运行这个应用
 
