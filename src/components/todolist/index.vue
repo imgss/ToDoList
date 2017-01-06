@@ -90,49 +90,9 @@
         margin: 0;
         padding: 0;
     }
-    
-    .section {
-        display: flex;
-        padding: 5px 0px;
-        justify-content: space-between;
-        align-items: flex-end;
-        transition: all 0.3s;
-        border-left: #f66 8px solid;
-        background-color: rgba(66, 185, 131, 0.6);
-        margin-bottom: 10px;
-        border-radius: 0 18px 18px 0;
-        padding: 3px;
-    }
-    
-    .tips {
-        font-size: small;
-        color: rgb(53, 73, 94);
-    }
-    
-    .finished {
-        border-left: #42b983 8px solid;
-    }
-    
-    i .finished {
-        color: #42b983;
-    }
-    
-    .section>div:first-child {
-        align-self: center;
-    }
-    
-    .section .big {
-        font-size: 3em;
-        margin: 10px 0;
-        line-height: 100%;
-    }
     /*.section>div:last-child{*/
     /*float:right;*/
     /*}*/
-    
-    .section i {
-        cursor: pointer;
-    }
     
     article>p {
         font-size: 200%;

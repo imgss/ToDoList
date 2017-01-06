@@ -116,6 +116,7 @@
         overflow-y: auto;
         bottom: 0;
         border-right: solid rgb(66, 185, 131) 1px;
+        -ms-overflow-style: none;
     }
     
     #options div {

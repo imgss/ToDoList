@@ -6,7 +6,7 @@
                       <div class="item">
                           <div class="big" >{{todo.value.toUpperCase().charAt(0)}}</div>
                           <div>
-                              <div><span>待完成：</span><span>{{todo.value}}</span></div>
+                              <div><span>待完成：</span><span class='detail'>{{todo.value}}</span></div>
                               <div><span>完成状态：</span><span>{{todo.isFinished?"已完成":"未完成"}}</span></div>
                               <div><span>截止时间：</span><span>{{todo.deadline}}</span></div>
                               <div class="tips"><span>备注：</span><span>{{todo.tips}}</span></div>
@@ -57,8 +57,55 @@
 </script>
 
 <style scoped>
+    @media screen and (max-width: 400px) {
+        .section {
+            font-size: 0.8em;
+        }
+    }
+    
+    .section {
+        display: flex;
+        padding: 5px 0px;
+        justify-content: space-between;
+        align-items: flex-end;
+        transition: all 0.3s;
+        border-left: #f66 8px solid;
+        background-color: rgba(66, 185, 131, 0.6);
+        margin-bottom: 10px;
+        border-radius: 0 18px 18px 0;
+        padding: 3px;
+        cursor: pointer;
+    }
+    
+    .tips {
+        font-size: small;
+        color: rgb(53, 73, 94);
+    }
+    
+    .detail {
+        overflow-x: auto;
+    }
+    
+    .finished {
+        border-left: #42b983 8px solid;
+    }
+    
+    i .finished {
+        color: #42b983;
+    }
+    
+    .section>div:first-child {
+        align-self: center;
+    }
+    
+    .section .big {
+        font-size: 3em;
+        margin: 10px 0;
+        line-height: 100%;
+    }
+    
     .item {
-        width: 300px;
+        width: 70%;
         display: flex;
         align-items: center;
         justify-content: flex-start;
