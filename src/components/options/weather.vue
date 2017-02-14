@@ -38,15 +38,19 @@
         },
         created() { //钩子函数，组件创建完成时调用getWeather方法获取天气信息
             this.getWeather();
-            setTimeout(this.getWeather, 2000); //有时一次加载不出来？？
 
         },
         methods: {
             getWeather() { //从百度api获取天气信息
                 this.$http.jsonp(this.url)
                     .then((response) => { //异步
-                        console.log(response);
-                        this.weatherInfo = response.data.results[0];
+                        if (response) {
+                            console.log(response);
+                            this.weatherInfo = response.data.results[0];
+                        } else { //没有响应就再发起一次
+                            console.error('agian');
+                            this.getWeather();
+                        }
                     });
             },
             addClass(e) { //通过这个方法完成天气信息的显示和隐藏。

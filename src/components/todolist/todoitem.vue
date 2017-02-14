@@ -14,7 +14,7 @@
                       </div>
                   <div>
                       <i class="fa fa-check-square fa-2x fa-fw" title="完成" v-if="!this.todo.isFinished" @click="finished"></i>
-                      <i class="fa fa-check-square-o fa-2x fa-fw" title="完成" v-else @click="finished"></i>
+                      <i class="fa fa-check-square-o fa-2x fa-fw" title="完成" style='color:#f36' v-else @click="finished"></i>
                       <i class="fa fa-times-circle fa-2x fa-fw" title="删除" @click="remove"></i>
                   </div>
               </li>

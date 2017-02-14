@@ -1,5 +1,5 @@
 <template>
-    <div id="todolist">
+    <div class="todolist">
         <!--侧边栏-->
         <article>
             <transition-group name="list" tag="ul" v-if='todos.length'>
@@ -52,11 +52,12 @@
 
 <style>
     @media screen and (min-width:950px) {
-        #todolist {
+        .todolist {
             position: relative;
             display: flex;
             top: 100px;
             left: 18%;
+            width: 82%;
         }
         article {
             float: right;
@@ -68,11 +69,12 @@
     }
     
     @media screen and (max-width: 950px) {
-        #todolist {
+        .todolist {
             position: relative;
             display: flex;
             top: 100px;
             left: 5%;
+            width: 95%;
         }
         article {
             float: right;

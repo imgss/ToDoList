@@ -5,7 +5,7 @@ import Vue from 'vue'
 import App from './App'
 import store from './vuex/store'
 import VueResource from 'vue-resource'
-
+import router from './router'
 Vue.use(VueResource);
 
 /* eslint-disable no-new */
@@ -13,5 +13,6 @@ new Vue({
     el: '#app',
     template: '<App/>',
     components: { App },
-    store
+    store,
+    router
 })

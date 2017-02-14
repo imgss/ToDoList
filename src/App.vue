@@ -1,7 +1,7 @@
 <template>
 <div id="#app">
  <newitem></newitem>
-  <todolist></todolist>
+  <router-view></router-view>
   <options></options>
   </div>
 </template>
