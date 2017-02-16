@@ -10,6 +10,8 @@
 
 * 2017.2.14 视图界面小优化，尽管界面依然很丑，初次使用vue-router,添加`/write`路由 :smile:
 
+* 2017.2.16 加入markdown编辑器
+
 ##截图
 
 ![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/pc.PNG "pc截图")  
