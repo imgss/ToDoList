@@ -2,6 +2,7 @@
     <div class='todolist editor'>
         <textarea v-model="md"></textarea>
         <div v-html="html" id='board'>html</div>
+        <i class="fa fa-floppy-o fa-2x"></i>
      </div>
 </template>
 
@@ -26,6 +27,13 @@
 </script>
 
 <style scoped>
+    i {
+        position: absolute;
+        margin-right: 5px;
+        margin-top: -30px;
+        cursor: pointer;
+    }
+    
     .editor {
         color: #333;
         margin-bottom: 20px;

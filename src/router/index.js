@@ -10,6 +10,10 @@ export default new Router({
     mode: 'history',
     routes: [
         { path: '/', component: todoList },
-        { path: '/write', component: writeView }
+        {
+            path: '/write',
+            component: writeView
+
+        }
     ]
 })

@@ -2,7 +2,10 @@
     <header id="add">
         <div>
             <span>To Do List </span>
-            <i title='新增一个项目' class="fa fa-plus-square fa-1x" @click="show=!show"></i>
+            <em>
+            <router-link to='/write'><i title='新增一条日记' class="fa fa-pencil-square  fa-fw"></i></router-link>
+            <i title='新增一个项目' class="fa fa-plus-square fa-fw" @click="show=!show"></i>
+            </em>
         </div>
         <transition name="fade">
             <additem v-show="show" @hide="show=!show"></additem>
@@ -63,8 +66,13 @@
         align-items: flex-end;
     }
     
-    header i {
-        transform: translate(0 10px);
+    header i,
+    header a {
+        transform: translate(0, 10px);
+    }
+    
+    header a {
+        margin-bottom:
     }
     
     header span {
