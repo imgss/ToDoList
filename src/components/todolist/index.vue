@@ -14,7 +14,6 @@
     import {
         mapState,
         mapGetters,
-        mapActions,
         mapMutations
     } from 'vuex';
 
@@ -29,19 +28,12 @@
         },
         computed: {
             ...mapGetters([
-                'todos',
-                'countTodos',
-                'countFinishedItems'
-
+                'todos'
             ])
         },
         methods: {
             ...mapMutations([
-                'removeItem',
-                'listByProp',
-                'listByDeadline',
-                'onlyUnfinished'
-
+                'removeItem'
             ])
         },
         components: {

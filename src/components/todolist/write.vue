@@ -1,26 +1,40 @@
 <template>
     <div class='todolist editor'>
-        <textarea v-model="md"></textarea>
+        <textarea v-model="md" placeholder="输入markdown"></textarea>
         <div v-html="html" id='board'>html</div>
-        <i class="fa fa-floppy-o fa-2x"></i>
+        <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)'></i>
      </div>
 </template>
 
 <script>
     import {
         markdown
-    } from 'markdown'
+    } from 'markdown';
+    import {
+        mapState,
+        mapGetters,
+        mapMutations
+    } from 'vuex';
 
     export default {
         data: function() {
             return {
-                md: '# string'
+                md: ''
             }
         },
         computed: {
             html: function() {
                 return markdown.toHTML(this.md);
-
+            }
+        },
+        methods: {
+            ...mapMutations([
+                'save_diary'
+            ])
+        },
+        beforeMount: function() {
+            if (this.$store.state.diary) {
+                this.md = this.$store.state.diary;
             }
         }
     }

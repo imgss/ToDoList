@@ -32,7 +32,8 @@ const state = {
             deadline: '18:00',
             show: true
         }
-    ]
+    ],
+    diary: '1'
 }
 let getters = {
     todos: state => state.todos,
@@ -41,7 +42,8 @@ let getters = {
         let countFinished = 0;
         state.todos.forEach(function(item) { if (item.isFinished) countFinished++; })
         return countFinished;
-    }
+    },
+    md: state => state.diary
 }
 let mutations = {
     additem(st, newit) {
@@ -60,9 +62,6 @@ let mutations = {
     },
     listByDeadline(st) { //按截止日期排序
         var todos = st.todos;
-        if (st.todosCopy) {
-            st.todos = st.todosCopy;
-        }
         st.todos.sort(function(self, next) {
             var numSelf = parseFloat(self.deadline.replace(/:/, '.'));
             var numNext = parseFloat(next.deadline.replace(/:/, '.'));
@@ -82,6 +81,10 @@ let mutations = {
                 item.show = true;
             });
         }
+    },
+    save_diary(st, str) {
+        console.log(str);
+        st.diary = str;
     }
 
 }
