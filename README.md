@@ -17,9 +17,14 @@
 
 ##截图
 
-![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/pc.PNG "pc截图")  
-<img src="https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/phone.png" alt="手机截图" style="width:300px">    
-![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/markdown.PNG "markdown编辑界面截图") 
+1 todolist截图
+>![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/pc.PNG "pc截图")  
+
+2 手机截图
+> <img src="https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/phone.png" alt="手机截图" width="360px"> 
+   
+3 markdown编辑界面截图
+> ![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/markdown.PNG "markdown编辑界面截图") 
 
 ## 运行这个应用
 

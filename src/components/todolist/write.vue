@@ -2,7 +2,7 @@
     <div class='todolist editor'>
         <textarea v-model="md" placeholder="输入markdown"></textarea>
         <div v-html="html" id='board'>html</div>
-        <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)'></i>
+        <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)' alt="保存"></i>
      </div>
 </template>
 
