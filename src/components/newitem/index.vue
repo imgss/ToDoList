@@ -3,7 +3,7 @@
         <div>
             <span>To Do List </span>
             <em>
-            <router-link to='/write'><i title='新增一条日记' class="fa fa-pencil-square  fa-fw"></i></router-link>
+            <router-link :to='to' @click.native='change_to'><i title='新增一条日记' :class="iswrite?'fa-list-ul':'fa-pencil-square'" class="fa   fa-fw"></i></router-link>
             <i title='新增一个项目' class="fa fa-plus-square fa-fw" @click="show=!show"></i>
             </em>
         </div>
@@ -25,7 +25,9 @@
         data: function() {
             return {
                 show: false,
-                timeLen: ''
+                timeLen: '',
+                iswrite: false,
+                to: '/write'
             }
         },
         methods: {
@@ -36,6 +38,11 @@
                  this.timeLen=(totalSec/(24*60*60)*100)+'%';//计算出当前时间占一天中的百分比*/
                 totalSec = now.getMinutes() * 60 + now.getSeconds();
                 this.timeLen = (totalSec / (60 * 60) * 100) + '%'; //计算出当前秒占一小时中的百分比
+            },
+            change_to: function() {
+                this.iswrite = !this.iswrite;
+                this.iswrite ? this.to = '/' : this.to = '/write';
+                console.log(this.to);
             }
         },
         components: {
