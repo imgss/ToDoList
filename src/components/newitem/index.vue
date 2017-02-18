@@ -55,6 +55,7 @@
 <style scoped>
     header {
         position: fixed;
+        padding: 6px 0;
         z-index: 10;
         left: 0;
         top: 0;
@@ -85,6 +86,7 @@
     header span {
         display: block;
         padding: 3px;
+        font-family: 'Pangolin', cursive;
         background: #42b983;
         box-shadow: 0 0 10px #222;
         border-radius: 12px;

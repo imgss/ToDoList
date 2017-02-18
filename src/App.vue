@@ -45,6 +45,7 @@
         margin-bottom: 0;
         overflow-x: hidden;
         min-width: 500px;
+        background-color: #eee;
     }
     
     ul {

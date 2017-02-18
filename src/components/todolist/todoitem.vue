@@ -6,10 +6,10 @@
                       <div class="item">
                           <div class="big" >{{todo.value.toUpperCase().charAt(0)}}</div>
                           <div>
-                              <div><span>待完成：</span><span class='detail'>{{todo.value}}</span></div>
-                              <div><span>完成状态：</span><span>{{todo.isFinished?"已完成":"未完成"}}</span></div>
-                              <div><span>截止时间：</span><span>{{todo.deadline}}</span></div>
-                              <div class="tips"><span>备注：</span><span>{{todo.tips}}</span></div>
+                              <div><span><i class="fa fa-bars" aria-hidden="true" title="待完成"></i></span><span class='detail'>{{todo.value}}</span></div>
+                              <div><span><i class="fa fa-question-circle" aria-hidden="true" title="完成状态"></i></span><span>{{todo.isFinished?"已完成":"未完成"}}</span></div>
+                              <div><span><i class="fa fa-clock-o" aria-hidden="true" title="截止时间"></i></span><span>{{todo.deadline}}</span></div>
+                              <div class="tips"><span>tips：</span><span>{{todo.tips}}</span></div>
                           </div>
                       </div>
                   <div>
@@ -65,7 +65,7 @@
     
     .section {
         display: flex;
-        padding: 5px 0px;
+        padding: 5px 5px;
         justify-content: space-between;
         align-items: flex-end;
         transition: all 0.3s;
@@ -73,8 +73,17 @@
         background-color: rgba(66, 185, 131, 0.6);
         margin-bottom: 10px;
         border-radius: 0 18px 18px 0;
-        padding: 3px;
+        padding: 3px 12px;
         cursor: pointer;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
+    }
+    /*    
+    .section div:first-child {
+        margin-left: 5px;
+    }*/
+    
+    .section:hover {
+        transform: scale(1.05);
     }
     
     .tips {
@@ -101,6 +110,7 @@
     .section .big {
         font-size: 3em;
         margin: 10px 0;
+        margin-right: 20px;
         line-height: 100%;
     }
     
@@ -109,18 +119,20 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        padding: 5px;
     }
     
     .item>div:last-child {
         display: table;
+        border-left: 1px dashed rgba(0, 0, 0, 0.4);
     }
     
     span:first-child {
-        width: 82px;
         vertical-align: middle;
     }
     
     span {
         display: table-cell;
+        padding-left: 20px;
     }
 </style>
