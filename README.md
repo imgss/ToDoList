@@ -20,10 +20,13 @@
 1. todolist截图
 >![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/pc.PNG "pc截图")  
 
-2. 手机截图
-> <img src="https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/phone.png" alt="手机截图" width="360px"> 
+2. todolist美化截图*毕竟不是设计师*
+>![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/pc2.0.PNG "pc截图")
+
+3. 手机截图
+><img src="https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/phone.png" alt="手机截图" width="360px"> 
    
-3. markdown编辑界面截图
+4. markdown编辑界面截图
 >![](https://github.com/imgss/ToDoList/blob/todolist-vuex/snip/markdown.PNG "markdown编辑界面截图") 
 
 ## 运行这个应用
