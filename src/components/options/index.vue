@@ -108,7 +108,7 @@
     #options {
         position: fixed;
         width: 180px;
-        top: 62px;
+        top: 80px;
         padding-top: 35px;
         padding-right: 30px;
         z-index: 1;

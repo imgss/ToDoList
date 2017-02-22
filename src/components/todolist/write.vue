@@ -1,8 +1,8 @@
 <template>
     <div class='todolist editor'>
         <div class='date'>
-        <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)' alt="保存"></i>
-        <span style="text-align:center">今天是:{{date}}</span>
+        <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)' alt="保存"></i>|
+        <span style="text-align:center"> <i class="fa fa-calendar" aria-hidden="true"></i>今天是:{{date}}</span>
         </div>
         <textarea v-model="md" placeholder="输入markdown"></textarea>
         <div v-html="html" id='board'>html</div>
@@ -79,5 +79,10 @@
         width: 49%;
         height: 100%;
         overflow: auto;
+    }
+    
+    #board {
+        background: #fef898;
+        line-height: 1.5em;
     }
 </style>
