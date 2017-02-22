@@ -33,7 +33,7 @@ const state = {
             show: true
         }
     ],
-    diary: ''
+    diary: '# 标题'
 }
 let getters = {
     todos: state => state.todos,

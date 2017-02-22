@@ -47,6 +47,7 @@
         .todolist {
             position: relative;
             display: flex;
+            flex-wrap: wrap;
             top: 100px;
             left: 18%;
             width: 82%;

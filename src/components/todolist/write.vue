@@ -1,8 +1,11 @@
 <template>
     <div class='todolist editor'>
+        <div class='date'>
+        <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)' alt="保存"></i>
+        <span style="text-align:center">今天是:{{date}}</span>
+        </div>
         <textarea v-model="md" placeholder="输入markdown"></textarea>
         <div v-html="html" id='board'>html</div>
-        <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)' alt="保存"></i>
      </div>
 </template>
 
@@ -25,6 +28,9 @@
         computed: {
             html: function() {
                 return markdown.toHTML(this.md);
+            },
+            date: function() {
+                return ((new Date()).toDateString().substring(4)).replace(/\ /g, ',');
             }
         },
         methods: {
@@ -47,8 +53,11 @@
 </script>
 
 <style scoped>
-    i {
-        position: absolute;
+    div.date {
+        width: 84%;
+    }
+    
+    div i {
         margin-right: 5px;
         margin-top: -30px;
         cursor: pointer;
@@ -56,8 +65,7 @@
     
     .editor {
         color: #333;
-        margin-bottom: 20px;
-        width: 83%;
+        margin-bottom: 10px;
         height: 70vh;
     }
     
@@ -66,6 +74,7 @@
         border: 1px solid #aaa;
         display: inline-block;
         margin: 0;
+        margin-top: 20px;
         padding: 0;
         width: 49%;
         height: 100%;
