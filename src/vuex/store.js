@@ -45,6 +45,11 @@ let getters = {
     },
     md: state => state.diary
 }
+let actions = {
+    autoSave: function(context, md) {
+        context.commit(save_diary(md));
+    }
+}
 let mutations = {
     additem(st, newit) {
         st.todos.push(newit);
@@ -83,7 +88,6 @@ let mutations = {
         }
     },
     save_diary(st, str) {
-        console.log(str);
         st.diary = str;
     }
 
@@ -92,5 +96,6 @@ let mutations = {
 export default new Vuex.Store({
     state,
     getters,
+    actions,
     mutations
 })

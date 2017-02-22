@@ -36,6 +36,12 @@
             if (this.$store.state.diary) {
                 this.md = this.$store.state.diary;
             }
+        },
+        beforeRouteLeave(to, from, next) {
+            // 导航离开该组件的对应路由时调用,切换路由时自动保存
+            console.log(this.md);
+            this.$store.commit('save_diary', this.md);
+            next();
         }
     }
 </script>

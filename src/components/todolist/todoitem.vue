@@ -83,7 +83,7 @@
     }*/
     
     .section:hover {
-        transform: scale(1.05);
+        background: rgba(66, 185, 131, 0.4);
     }
     
     .tips {
