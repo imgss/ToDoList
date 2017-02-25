@@ -51,9 +51,6 @@ npm run dev
 # build for production with minification
 npm run build
 
-# run unit tests
-npm run unit
+# no test
 
-# run all tests
-npm test
 ```
