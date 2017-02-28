@@ -43,5 +43,18 @@
         background-color: #f66;
         border-radius: 50%;
         margin-top: -5px;
+        animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+        0% {
+            box-shadow: none;
+        }
+        50% {
+            box-shadow: 0 0 14px #f00;
+        }
+        100% {
+            box-shadow: none;
+        }
     }
 </style>

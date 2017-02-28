@@ -1,7 +1,7 @@
 <template>
     <header id="add">
         <div>
-            <span>To Do List </span>
+            <span>To Do List</span>
             <em>
             <router-link :to='to' @click.native='change_to'><i title='新增一条日记' :class="iswrite?'fa-list-ul':'fa-pencil-square'" class="fa   fa-fw"></i></router-link>
             <i title='新增一个项目' class="fa fa-plus-square fa-fw" @click="show=!show"></i>
