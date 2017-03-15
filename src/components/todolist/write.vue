@@ -3,7 +3,9 @@
         <div class='date'>
         <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)' alt="保存"></i>|
         <i class="fa fa-2x" :class=" proview?'fa-columns':'fa-eye'" @click='proview=!proview'  alt="预览"></i>|
+        <i class="fa fa-2x fa-folder-open"  @click='open=!open'  alt="打开文件"></i>|
         <span style="text-align:center"> <i class="fa fa-calendar" aria-hidden="true"></i>今天是:{{date}}</span>
+        <input v-if="open" type="file" id='mdfile' @change="readfile">
         </div>
         <div class="wrapper">
         <textarea v-model="md" v-if="!proview" placeholder="输入markdown"></textarea>
@@ -26,7 +28,8 @@
         data: function() {
             return {
                 md: '',
-                proview: false
+                proview: false,
+                open: false
             }
         },
         computed: {
