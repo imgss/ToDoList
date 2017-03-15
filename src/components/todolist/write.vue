@@ -2,10 +2,13 @@
     <div class='todolist ' id='editor'>
         <div class='date'>
         <i class="fa fa-floppy-o fa-2x" @click='save_diary(md)' @keyup.alt.13='save_diary(md)' alt="保存"></i>|
+        <i class="fa fa-2x" :class=" proview?'fa-columns':'fa-eye'" @click='proview=!proview'  alt="预览"></i>|
         <span style="text-align:center"> <i class="fa fa-calendar" aria-hidden="true"></i>今天是:{{date}}</span>
         </div>
-        <textarea v-model="md" placeholder="输入markdown"></textarea>
-        <div v-html="html" id='board'>html</div>
+        <div class="wrapper">
+        <textarea v-model="md" v-if="!proview" placeholder="输入markdown"></textarea>
+        <div v-html="html" id='board' :style="{width:proview?'100%':'49%'}">html</div>
+        </div>
      </div>
 </template>
 
@@ -22,7 +25,8 @@
     export default {
         data: function() {
             return {
-                md: ''
+                md: '',
+                proview: false
             }
         },
         computed: {
@@ -63,6 +67,13 @@
         cursor: pointer;
     }
     
+    .wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        height: 75vh;
+    }
+    
     #editor {
         color: #333;
         margin-bottom: 10px;
@@ -79,11 +90,12 @@
         textarea,
         #board {
             border: 1px solid #aaa;
-            display: inline-block;
+            display: block;
             margin: 0;
             margin-top: 20px;
             padding: 0;
-            width: 49%;
+            min-width: 49%;
+            /*width: 49%;*/
             height: 100%;
             overflow: auto;
         }
@@ -93,11 +105,12 @@
         textarea,
         #board {
             border: 1px solid #aaa;
-            display: inline-block;
+            display: block;
             margin: 0;
             margin-top: 20px;
             padding: 0;
             width: 100%;
+            min-width: 49%;
             height: 49%;
             overflow: auto;
         }
