@@ -43,7 +43,21 @@
         methods: {
             ...mapMutations([
                 'save_diary'
-            ])
+            ]),
+            readfile(event) {
+                var that = this;
+                var file = event.target.files[0];
+                if (file.name.includes('.md') || file.name.includes('.markdown')) {
+                    var reader = new FileReader();
+                    reader.readAsText(file);
+                    reader.onload = function(e) {
+                        that.md = e.target.result;
+                    }
+
+                }
+
+
+            }
         },
         beforeMount: function() {
             if (this.$store.state.diary) {
